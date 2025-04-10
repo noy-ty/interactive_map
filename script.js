@@ -84,3 +84,6 @@ updatePoints();
 // Recalculate points when the window is resized
 window.addEventListener('resize', updatePoints);
 
+// Positioning after page load
+window.addEventListener('load', updatePoints);
+
