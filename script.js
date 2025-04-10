@@ -78,8 +78,12 @@ document.getElementById('overlay').addEventListener('click', (event) => {
   }
 });
 
-// Initial load
-updatePoints();
+const mapImage = document.getElementById('mapImage');
+
+mapImage.addEventListener('load', () => {
+  // Position the points only after the map was loaded
+  updatePoints();
+});
 
 // Recalculate points when the window is resized
 window.addEventListener('resize', updatePoints);
