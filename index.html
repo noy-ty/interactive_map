@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tel Yosef Interactive Map</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>מפה אינטראקטיבית של תל יוסף</h2>
+    <div id="mapContainer">
+      <div id="mapLegend">
+	<div><span class="legend-dot garden"></span> גנים</div>
+	<div><span class="legend-dot playground"></span> פינות משחק</div>
+	<div><span class="legend-dot fruits"></span> עצי פרי</div>
+      </div>
+      <img id="mapImage" src="./images/kibbutz_cartoon_map.png" alt="Map" />
+      <div id="pointsContainer"></div>
+    </div>
+    <div id="overlay" class="overlay">
+      <div class="overlay-content">
+        <img id="overlayImage" src="" alt="Point Image" />
+        <p id="overlayDescription"></p>
+        <button id="closeBtn">סגור</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+

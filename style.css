@@ -1,0 +1,194 @@
+/* style.css */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  max-width: 1000px;
+  width: 100%;
+}
+
+#mapContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Make sure the map takes up full width */
+  max-width: 100%;
+}
+
+#mapImage {
+  width: 100%;  /* Make the image scale to fit the container */
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+#mapLegend {
+  position: absolute;
+  top: 5%; /* Set the distance from the top (percentage of map height) */
+  right: 5%; /* Set the distance from the right (percentage of map width) */
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  z-index: 100;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  direction: rtl; /* Makes text flow from right to left */
+  text-align: right; /* Aligns the text to the right */
+}
+
+#mapLegend div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Ensure items align to the right */
+  margin-bottom: 8px;
+}
+
+.legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 8px; /* Use margin-left instead of right for RTL */
+  border: 2px solid white;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Customize the colors to match your point styles */
+.legend-dot.garden {
+  background-color: green;
+}
+
+.legend-dot.playground {
+  background-color: blue;
+}
+
+.legend-dot.fruits {
+  background-color: orange;
+}
+
+#pointsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.point {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  /* Strong shadow */
+  border: 2px solid white; /* White border for contrast */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  /* Add a responsive size adjustment for smaller screens */
+  width: 11px;  /* Smaller size on mobile */
+  height: 11px;
+}
+
+/* Optional: Hover effect to make the point more interactive */
+.point:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);  /* Stronger shadow on hover */
+  transform: scale(1.2);  /* Slightly enlarge the point when hovered */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: auto; /* Ensure no content is cut off */
+}
+
+.overlay-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 100%;
+  max-width: 350px; /* Max width to avoid oversized content on mobile */
+  max-height: 80vh; /* Prevent the content from overflowing the screen */
+  overflow: auto; /* Allow scrolling if content exceeds max height */
+}
+
+/* General styles for overlay image */
+#overlayImage {
+  width: 100%; /* Default to 100% width */
+  max-width: 400px; /* Limit the maximum size on larger screens */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 15px; /* Add space below the image */
+  border-radius: 8px; /* Optional: round the corners of the image */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow for better visibility */
+}
+
+#closeBtn {
+  background-color: #ff3b3b;
+  color: white;
+  border: none;
+  padding: 5px 10px; /* Consider 12px 20px for Larger button size */
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 18px; /* Larger text for easier tapping */
+}
+
+@media (min-width: 768px) {
+  /* Larger size for tablets and desktops */
+  .point {
+    width: 20px;
+    height: 20px;
+  }
+  
+  #overlayImage {
+    width: 80%; /* Keep the image width at 80% on larger screens */
+    max-width: 500px; /* Adjust the maximum width for larger displays */
+  }
+}
+
+/* Responsive styles for mobile screens */
+@media (max-width: 600px) {
+  #mapLegend {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    margin-right: 6px;
+  }
+
+  .overlay-content {
+    width: 80%; /* Make it full width on small screens */
+    max-width: 100%; /* Allow full use of screen space */
+    max-height: 80vh; /* Limit the height on mobile */
+    padding: 15px; /* Smaller padding for mobile */
+  }
+  
+  #overlayImage {
+    width: 80%;  /* Make the image smaller on mobile */
+    max-width: 90%; /* Ensure the image fits within the screen width on mobile */
+    margin-bottom: 10px; /* Reduce the margin on mobile */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Lighter shadow for mobile */
+  }
+  
+  #closeBtn {
+    padding: 10px 15px; /* Adjust padding for mobile */
+    font-size: 16px;    /* Smaller font size for smaller screens */
+  }  
+}
