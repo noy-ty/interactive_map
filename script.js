@@ -78,6 +78,42 @@ document.getElementById('overlay').addEventListener('click', (event) => {
   }
 });
 
+// Preload images function
+function preloadImages(imageUrls) {
+  const promises = imageUrls.map(url => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = resolve;
+      img.onerror = reject;
+    });
+  });
+  return Promise.all(promises);
+}
+
+// Collect all image URLs from points and preload them
+function preloadPointImages() {
+  const imageUrls = [];
+
+  points.forEach(point => {
+    const imageUrl = point.image;
+    if (imageUrl) {
+      imageUrls.push(imageUrl);
+    }
+  });
+
+  return preloadImages(imageUrls);
+}
+
+// Call preload function on page load
+window.addEventListener('load', () => {
+  preloadPointImages().then(() => {
+    console.log('Images preloaded successfully');
+  }).catch(error => {
+    console.error('Error preloading images:', error);
+  });
+});
+
 // Initial load
 updatePoints();
 
